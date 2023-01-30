@@ -8,6 +8,8 @@ An Apollo Server v4 mixin for moleculerjs. Schema first &amp; compatible with Gr
 - Apollo Server v4
 - Compatible with GraphQL Codegen
 - DataLoader
+- Tracing
+- Metrics
 
 ## The inspiration
 
