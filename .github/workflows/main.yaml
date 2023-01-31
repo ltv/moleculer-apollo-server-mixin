@@ -43,10 +43,7 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
       - name: Bump version and push back
-        run: |
-          - git config --global --add safe.directory /opt/atlassian/pipelines/agent/build
-          - yarn latest-prepare
-          - git push --follow-tags origin HEAD
+        run: yarn latest-prepare
 
       - name: Push changes
         uses: ad-m/github-push-action@master
