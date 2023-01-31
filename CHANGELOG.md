@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.15](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.15%0Dv0.1.14) (2023-01-31)
+
+
+### Miscellaneous
+
+* missing needs ([0f7b28f](https://github.com/ltv/moleculer-apollo-server-mixin/commits/0f7b28ffbec98545ff8bf5e3a6502ddf66ce2d6d))
+
 ### [0.1.14](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.14%0Dv0.1.13) (2023-01-31)
 
 
