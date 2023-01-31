@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.10%0Dv0.1.9) (2023-01-31)
+
+
+### Miscellaneous
+
+* add automerge & assign workflow ([8e55374](https://github.com/ltv/moleculer-apollo-server-mixin/commits/8e5537413c5665678cab72c14ef1c4c8ce18f21a))
+
 ### [0.1.9](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.9%0Dv0.1.8) (2023-01-31)
 
 
