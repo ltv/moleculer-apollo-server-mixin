@@ -1,4 +1,6 @@
 !./dist
+!./dist/**/*
+!./dist/types/
 !package.json
 ./*.js
 commitlint.config.js
