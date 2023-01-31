@@ -1,6 +1,6 @@
 {
   "name": "@ltv/moleculer-apollo-server-mixin",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "An Apollo Server v4 mixin for moleculerjs. Schema first & compatible with GraphQL codegen",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
