@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.12](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.12%0Dv0.1.11) (2023-01-31)
+
+
+### Features
+
+* use buildSubgraphSchema from @apollo/subgraph ([689e823](https://github.com/ltv/moleculer-apollo-server-mixin/commits/689e8239ae801205ce7efd289c4e76883ecf6977))
+
 ### [0.1.11](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.11%0Dv0.1.10) (2023-01-31)
 
 
