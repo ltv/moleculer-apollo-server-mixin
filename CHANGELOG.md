@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.19](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.19%0Dv0.1.18) (2023-01-31)
+
+
+### Fixes and improvements
+
+* pnpm run build missing ./dist/types ([8aefa89](https://github.com/ltv/moleculer-apollo-server-mixin/commits/8aefa8965bc772ce1734669e41a5d794ceadfe77))
+
 ### [0.1.18](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.18%0Dv0.1.16) (2023-01-31)
 
 
