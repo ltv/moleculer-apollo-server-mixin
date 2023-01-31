@@ -7,7 +7,7 @@ import http2 from 'http2'
 import https from 'https'
 import { parse as urlParse } from 'url'
 
-import { buildSubgraphSchema } from '@apollo/federation'
+import { buildSubgraphSchema } from '@apollo/subgraph'
 import { GraphQLResolveInfo, GraphQLSchema } from 'graphql'
 import type { GatewayResponse, IncomingRequest } from 'moleculer-web'
 import { defaultsDeep } from './defaultsDeep'

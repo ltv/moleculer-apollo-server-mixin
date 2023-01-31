@@ -30,8 +30,8 @@
   "author": "Luc <luc@ltv.vn>",
   "license": "MIT",
   "dependencies": {
-    "@apollo/federation": "^0.38.1",
     "@apollo/server": "^4.3.2",
+    "@apollo/subgraph": "^2.3.0",
     "graphql": "^16.6.0"
   },
   "devDependencies": {
