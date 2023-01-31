@@ -13,7 +13,7 @@ module.exports = {
   ],
   commitUrlFormat: '{{host}}/{{owner}}/{{repository}}/commits/{{hash}}',
   compareUrlFormat: '{{host}}/{{owner}}/{{repository}}/branches/compare/{{currentTag}}%0D{{previousTag}}',
-  releaseCommitMessageFormat: 'chore(release): {{currentTag}} [skip ci]',
+  releaseCommitMessageFormat: 'chore(release): {{currentTag}}',
   bumpFiles: ['package.json'],
   packageFiles: ['package.json'],
 }
