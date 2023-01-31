@@ -16,9 +16,12 @@ jobs:
           node-version: "16.x"
           registry-url: "https://registry.npmjs.org"
           scope: "@ltv"
+      - name: Extract release notes
+        id: extract-release-notes
+        uses: ffurrer2/extract-release-notes@v1
+      - uses: ncipollo/release-action@v1
+        with:
+          body: ${{ steps.extract-release-notes.outputs.release_notes }}
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - uses: ncipollo/release-action@v1
-        with:
-          bodyFile: "CHANGELOG.md"
