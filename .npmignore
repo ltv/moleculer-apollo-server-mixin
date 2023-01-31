@@ -8,3 +8,4 @@ jest.*.js
 coverage
 index.ts
 !cdk.tsconfig.json
+src/
