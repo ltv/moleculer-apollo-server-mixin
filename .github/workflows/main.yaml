@@ -46,7 +46,7 @@ jobs:
         run: pnpm test
 
       - name: Build
-        run: pnpm build
+        run: yarn build
 
       - name: Configure committer
         run: |
