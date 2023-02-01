@@ -92,7 +92,7 @@ export type MoleculerActionResolver<TResult, TArgs, TParent> =
     handler: ActionHandlerFn<TResult, TArgs, TParent>;
   };
 
-export type GraphQLActionSchemaTypeNested = {
+export type GraphQLActionSchemaNested = {
   [K in keyof Resolvers]: {
     [L in keyof Resolvers[K]]: MoleculerActionResolver<
       extractResolverType<Resolvers[K][L]>['Result'],
@@ -102,8 +102,8 @@ export type GraphQLActionSchemaTypeNested = {
   };
 };
 
-export type GraphQLActionSchemaType<T extends keyof Resolvers> = PickAndFlatten<
-  GraphQLActionSchemaTypeNested,
+export type GraphQLActionSchema<T extends keyof Resolvers> = PickAndFlatten<
+  GraphQLActionSchemaNested,
   T
 >;
 `

@@ -103,7 +103,7 @@ export const typeDefs = gql`
 
 ```ts
 import {
-  GraphQLActionSchemaType,
+  GraphQLActionSchema,
   ServiceSettings,
   User,
 } from '@shared/graphql/generated';
@@ -118,10 +118,10 @@ const users: User[] = [
 const name = 'user';
 
 type UserActionSchema = {
-  resolveUsername: GraphQLActionSchemaType<'User'>['username'];
+  resolveUsername: GraphQLActionSchema<'User'>['username'];
 };
 
-const actions: GraphQLActionSchemaType<'Query' | 'User'> & UserActionSchema = {
+const actions: GraphQLActionSchema<'Query' | 'User'> & UserActionSchema = {
   allUsers: {
     handler: async () => {
       return users;
