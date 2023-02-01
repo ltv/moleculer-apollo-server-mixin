@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.21](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.21%0Dv0.1.20) (2023-02-01)
+
+
+### Features
+
+* change GraphQLActionSchemaType -> GraphQLActionSchema ([e88994a](https://github.com/ltv/moleculer-apollo-server-mixin/commits/e88994a9699da2c1f2c8b211a8449337f3ff0fe1))
+
 ### [0.1.20](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.20%0Dv0.1.19) (2023-02-01)
 
 
