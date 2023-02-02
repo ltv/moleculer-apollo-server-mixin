@@ -67,10 +67,24 @@ export type ServiceSettings<ServiceName extends string = 'unknown', AllowActions
   resolvers: MoleculerResolvers<ServiceName, AllowActions>;
 } & ExtraSettings;
 
-export type GraphQLContext<TArgs, TParent = unknown> = Context<TArgs & { $parent: TParent, $info: GraphQLResolveInfo, $args: TArgs }>
-export type ActionHandlerFn<Result, Args = unknown, TParent = unknown> = (ctx: GraphQLContext<Args, TParent>) => Promise<Result> | Result;
+export type GraphQLContext<TArgs, TParent = unknown> = Context<TArgs & { $parent: TParent; $info: GraphQLResolveInfo; $args: TArgs }>;
+export type ActionHandlerFn<
+  AppContext,
+  Result,
+  Args = unknown,
+  TParent = unknown,
+> = (
+  ctx: AppContext & GraphQLContext<Args, TParent>,
+) => Promise<Result> | Result;
 
-export type extractResolverType<T> = T extends Resolver<infer TResult, infer TParent, infer TContext, infer TArgs> ? { Result: TResult, Parent: TParent, Context: TContext, Args: TArgs} : never
+export type extractResolverType<T> = T extends Resolver<
+  infer TResult,
+  infer TParent,
+  infer TContext,
+  infer TArgs
+>
+  ? { Result: TResult; Parent: TParent; Context: TContext; Args: TArgs }
+  : never;
 
 export type MoleculerActionSchema = Pick<
   ActionSchema,
@@ -87,14 +101,15 @@ export type MoleculerActionSchema = Pick<
   | 'hooks'
 >;
 
-export type MoleculerActionResolver<TResult, TArgs, TParent> =
+export type MoleculerActionResolver<AppContext, TResult, TArgs, TParent> =
   MoleculerActionSchema & {
-    handler: ActionHandlerFn<TResult, TArgs, TParent>;
+    handler: ActionHandlerFn<AppContext, TResult, TArgs, TParent>;
   };
 
-export type GraphQLActionSchemaNested = {
+export type GraphQLActionSchemaNested<AppContext> = {
   [K in keyof Resolvers]: {
     [L in keyof Resolvers[K]]: MoleculerActionResolver<
+      AppContext,
       extractResolverType<Resolvers[K][L]>['Result'],
       extractResolverType<Resolvers[K][L]>['Args'],
       extractResolverType<Resolvers[K][L]>['Parent']
@@ -102,10 +117,10 @@ export type GraphQLActionSchemaNested = {
   };
 };
 
-export type GraphQLActionSchema<T extends keyof Resolvers> = PickAndFlatten<
-  GraphQLActionSchemaNested,
-  T
->;
+export type GraphQLActionSchema<
+  T extends keyof Resolvers,
+  AppContext = unknown,
+> = PickAndFlatten<GraphQLActionSchemaNested<AppContext>, T>;
 `
 
 export const graphQLCodeGenPlugins = [
