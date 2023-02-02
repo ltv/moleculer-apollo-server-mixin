@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.23](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.23%0Dv0.1.22) (2023-02-02)
+
+
+### Features
+
+* add AppContext for additional context ([ceb0dc5](https://github.com/ltv/moleculer-apollo-server-mixin/commits/ceb0dc51bc15dc50f8d1c5f71e1597f0466b73cf))
+
 ### [0.1.22](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.22%0Dv0.1.21) (2023-02-02)
 
 
