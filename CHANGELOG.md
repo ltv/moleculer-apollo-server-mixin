@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.22](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.22%0Dv0.1.21) (2023-02-02)
+
+
+### Fixes and improvements
+
+* cannot get svc without withAction ([fcbc65a](https://github.com/ltv/moleculer-apollo-server-mixin/commits/fcbc65ac9420bad96c71060e480101e4846c3921))
+
 ### [0.1.21](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.21%0Dv0.1.20) (2023-02-01)
 
 
