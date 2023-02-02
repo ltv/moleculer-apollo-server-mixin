@@ -17,6 +17,7 @@ import {
   ApolloServerServerServiceSettings,
   MoleculerContextFunctionArgument,
   MoleculerContextWithResponseType,
+  ServiceListCatalogOptions,
 } from './types'
 import { SchemaModule, createHeaderMap } from './utils'
 
@@ -156,8 +157,8 @@ export function ApolloServerMixin<TContext extends BaseContext = any>(
         }
 
         const services = this.broker.registry
-          .getServiceList()
-          .filter((service: { name: string }) => options.modules.includes(service.name))
+          .getServiceList({ withActions: true } as ServiceListCatalogOptions)
+          .filter((service) => options.modules.includes(service.name))
 
         const schema = this.generateGraphQLSchema(services)
 
@@ -282,6 +283,7 @@ export function ApolloServerMixin<TContext extends BaseContext = any>(
           }
           res.end()
         } catch (e) {
+          this.logger.error(e)
           const error = e as Error & { statusCode: number; headers: Record<string, string>; code?: number }
           if ('HttpQueryError' === error.name && error.headers) {
             Object.keys(error.headers).forEach((header) => res.setHeader(header, error.headers[header]))
@@ -321,6 +323,7 @@ export function ApolloServerMixin<TContext extends BaseContext = any>(
           const service = res.$service
           service.sendResponse(req, res, responseData)
         } catch (err) {
+          this.logger.error(err)
           this.sendError(req, res, err)
         }
       },

@@ -50,3 +50,12 @@ export interface IGraphQLServiceSettings<TResolvers = any> {
   typeDefs: string
   resolvers: TResolvers
 }
+
+export interface ServiceListCatalogOptions {
+  onlyLocal?: boolean
+  onlyAvailable?: boolean
+  skipInternal?: boolean
+  withActions?: boolean
+  withEvents?: boolean
+  grouping?: boolean
+}
