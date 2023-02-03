@@ -9,8 +9,9 @@ import { parse as urlParse } from 'url'
 
 import { buildSubgraphSchema } from '@apollo/subgraph'
 import { GraphQLResolveInfo, GraphQLSchema } from 'graphql'
+import defaultsDeep from 'lodash.defaultsDeep'
+import omit from 'lodash.omit'
 import type { GatewayResponse, IncomingRequest } from 'moleculer-web'
-import { defaultsDeep } from './defaultsDeep'
 import { gql } from './gql'
 import {
   ApolloServerMixinOptions,
@@ -129,12 +130,18 @@ export function ApolloServerMixin<TContext extends BaseContext = any>(
           ApolloServerPluginDrainHttpServer({
             httpServer: httpServer as http.Server,
           }),
+          ...(options.apollo?.plugins || []), // append the plugins from the options
         ]
         if (schema) {
-          return new ApolloServer<TContext>({ schema, plugins })
+          const apollo = omit(options.apollo, ['typeDefs', 'resolvers', 'plugins'])
+          const asOptions = defaultsDeep({ schema, plugins }, apollo)
+          // in this case, no need typeDefs and resolvers are provided
+          return new ApolloServer<TContext>(asOptions)
         }
         if (typeDefs && resolvers) {
-          return new ApolloServer<TContext>({ typeDefs, resolvers, plugins })
+          // this this case, no need to provide schema
+          const asOptions = defaultsDeep({ typeDefs, resolvers, plugins }, omit(options.apollo, ['schema', 'plugins']))
+          return new ApolloServer<TContext>(asOptions)
         }
       },
 

@@ -6,6 +6,8 @@ specifiers:
   '@commitlint/cli': ^17.4.2
   '@commitlint/config-conventional': ^17.4.2
   '@types/jest': ^29.4.0
+  '@types/lodash.defaultsdeep': ^4.6.7
+  '@types/lodash.omit': ^4.5.7
   '@types/node': ^18.11.18
   commitizen: ^4.3.0
   cz-conventional-changelog: ^3.3.0
@@ -15,6 +17,8 @@ specifiers:
   husky: ^8.0.3
   jest: ^29.4.1
   lint-staged: ^13.1.0
+  lodash.defaultsdeep: ^4.6.1
+  lodash.omit: ^4.5.0
   moleculer: ^0.14.28
   moleculer-web: ^0.10.5
   prettier: ^2.8.3
@@ -28,12 +32,15 @@ specifiers:
 dependencies:
   '@apollo/server': 4.3.2_graphql@16.6.0
   '@apollo/subgraph': 2.3.0_graphql@16.6.0
+  '@types/lodash.omit': 4.5.7
   graphql: 16.6.0
+  lodash.defaultsdeep: 4.6.1
 
 devDependencies:
   '@commitlint/cli': 17.4.2
   '@commitlint/config-conventional': 17.4.2
   '@types/jest': 29.4.0
+  '@types/lodash.defaultsdeep': 4.6.7
   '@types/node': 18.11.18
   commitizen: 4.3.0
   cz-conventional-changelog: 3.3.0
@@ -42,6 +49,7 @@ devDependencies:
   husky: 8.0.3
   jest: 29.4.1_zfha7dvnw4nti6zkbsmhmn6xo4
   lint-staged: 13.1.0
+  lodash.omit: 4.5.0
   moleculer: 0.14.28
   moleculer-web: 0.10.5_moleculer@0.14.28
   prettier: 2.8.3
@@ -1452,6 +1460,21 @@ packages:
       expect: 29.4.1
       pretty-format: 29.4.1
     dev: true
+
+  /@types/lodash.defaultsdeep/4.6.7:
+    resolution: {integrity: sha512-D+AUxs64qehDMkbfFoskG0XsIOh2CHBGqYfcQcubLbZSFCGKJKS885su3a97huqBNHj+p9of9UZ/uUIP46wUGQ==}
+    dependencies:
+      '@types/lodash': 4.14.191
+    dev: true
+
+  /@types/lodash.omit/4.5.7:
+    resolution: {integrity: sha512-6q6cNg0tQ6oTWjSM+BcYMBhan54P/gLqBldG4AuXd3nKr0oeVekWNS4VrNEu3BhCSDXtGapi7zjhnna0s03KpA==}
+    dependencies:
+      '@types/lodash': 4.14.191
+    dev: false
+
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
 
   /@types/long/4.0.2:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
@@ -3831,6 +3854,10 @@ packages:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
     dev: true
 
+  /lodash.defaultsdeep/4.6.1:
+    resolution: {integrity: sha512-3j8wdDzYuWO3lM3Reg03MuQR957t287Rpcxp1njpEa8oDrikb+FwGdW3n+FELh/A6qib6yPit0j/pv9G/yeAqA==}
+    dev: false
+
   /lodash.isfunction/3.0.9:
     resolution: {integrity: sha512-AirXNj15uRIMMPihnkInB4i3NHeb4iBtNg9WRWuK2o31S+ePwwNmDPaTL3o7dTJ+VXNZim7rFs4rxN4YU1oUJw==}
     dev: true
@@ -3861,6 +3888,10 @@ packages:
 
   /lodash.mergewith/4.6.2:
     resolution: {integrity: sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==}
+    dev: true
+
+  /lodash.omit/4.5.0:
+    resolution: {integrity: sha512-XeqSp49hNGmlkj2EJlfrQFIzQ6lXdNro9sddtQzcJY8QaoC2GO0DT7xaIokHeyM+mIT0mPMlPvkYzg2xCuHdZg==}
     dev: true
 
   /lodash.snakecase/4.1.1:
