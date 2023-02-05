@@ -13,7 +13,7 @@ import { buildSubgraphSchema } from '@apollo/subgraph'
 import { GraphQLResolveInfo, GraphQLSchema } from 'graphql'
 import defaultsDeep from 'lodash.defaultsdeep'
 import omit from 'lodash.omit'
-import type { GatewayResponse, IncomingRequest } from 'moleculer-web'
+import type { ApiRouteSchema, GatewayResponse, IncomingRequest } from 'moleculer-web'
 import { gql } from './gql'
 import {
   ApolloServerMixinOptions,
@@ -42,8 +42,17 @@ export function ApolloServerMixin<TContext extends BaseContext = any>(
 ): Partial<ServiceSchema> {
   let apolloServer: ApolloServer<TContext>
   let httpServer: http.Server | https.Server | http2.Http2Server
+  const defaultRouteOptions: ApiRouteSchema = {
+    path: '/graphql',
+    cors: {
+      origin: '*',
+    },
+    mappingPolicy: 'restrict',
+    bodyParsers: { json: true, urlencoded: { extended: true } },
+  }
   const { typeDefs, resolvers } = options.apollo
   const { httpServer: httpServerOptions } = options
+  const route = defaultsDeep(options.route || {}, defaultRouteOptions)
 
   const context: ContextFunction<[MoleculerContextFunctionArgument], TContext> = options.context || defaultContext
 
@@ -63,21 +72,19 @@ export function ApolloServerMixin<TContext extends BaseContext = any>(
       // set the http server to the service settings (in this case, if you want to use the moleculer-web, the moleculer-web will use this server)
       this.settings.server = httpServer
 
-      this.settings?.routes.unshift({
-        path: '/graphql',
-        cors: {
-          origin: '*',
-        },
-        mappingPolicy: 'restrict',
-        aliases: {
-          // eslint-disable-next-line @typescript-eslint/naming-convention
-          '/': {
-            method: 'POST',
-            handler: this.handleGraphQLRequest,
+      this.settings?.routes.unshift(
+        defaultsDeep(
+          {
+            aliases: {
+              '/': {
+                method: 'POST',
+                handler: this.handleGraphQLRequest,
+              },
+            },
           },
-        },
-        bodyParsers: { json: true, urlencoded: { extended: true } },
-      })
+          route,
+        ),
+      )
     },
 
     async started() {

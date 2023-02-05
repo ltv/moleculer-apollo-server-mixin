@@ -1,6 +1,6 @@
 import { ApolloServerOptions, BaseContext, ContextFunction } from '@apollo/server'
 import type { Context } from 'moleculer'
-import { GatewayResponse, IncomingRequest } from 'moleculer-web'
+import { ApiRouteSchema, GatewayResponse, IncomingRequest } from 'moleculer-web'
 
 export type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never
 export type PickAndFlatten<T, K extends keyof T> = UnionToIntersection<T[K]>
@@ -28,6 +28,7 @@ export interface ApolloServerMixinOptions<TContext extends BaseContext> {
   modules: string[]
   httpServer?: ApolloServerMixinHttpServerOptions
   context?: ContextFunction<[MoleculerContextFunctionArgument], TContext>
+  route?: ApiRouteSchema
 }
 
 export interface MoleculerContextFunctionArgument {
