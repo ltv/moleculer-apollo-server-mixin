@@ -1,7 +1,9 @@
 import { Context, ServiceSchema } from 'moleculer'
 
 import { ApolloServer, BaseContext, ContextFunction, HTTPGraphQLRequest } from '@apollo/server'
+import { ApolloServerPluginUsageReportingDisabled } from '@apollo/server/plugin/disabled'
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer'
+import { ApolloServerPluginInlineTrace } from '@apollo/server/plugin/inlineTrace'
 import http from 'http'
 import http2 from 'http2'
 import https from 'https'
@@ -9,7 +11,7 @@ import { parse as urlParse } from 'url'
 
 import { buildSubgraphSchema } from '@apollo/subgraph'
 import { GraphQLResolveInfo, GraphQLSchema } from 'graphql'
-import defaultsDeep from 'lodash.defaultsDeep'
+import defaultsDeep from 'lodash.defaultsdeep'
 import omit from 'lodash.omit'
 import type { GatewayResponse, IncomingRequest } from 'moleculer-web'
 import { gql } from './gql'
@@ -130,17 +132,26 @@ export function ApolloServerMixin<TContext extends BaseContext = any>(
           ApolloServerPluginDrainHttpServer({
             httpServer: httpServer as http.Server,
           }),
+          ApolloServerPluginUsageReportingDisabled(),
+          ApolloServerPluginInlineTrace({
+            includeErrors: {
+              transform: (err) => {
+                this.logger.error('[ApolloServerPluginInlineTrace] > error: ', err)
+                return err
+              },
+            },
+          }),
           ...(options.apollo?.plugins || []), // append the plugins from the options
         ]
+        const apolloOpts = defaultsDeep({ logger: this.logger }, omit(options.apollo, ['plugins']))
         if (schema) {
-          const apollo = omit(options.apollo, ['typeDefs', 'resolvers', 'plugins'])
+          const apollo = omit(apolloOpts, ['typeDefs', 'resolvers'])
           const asOptions = defaultsDeep({ schema, plugins }, apollo)
-          // in this case, no need typeDefs and resolvers are provided
           return new ApolloServer<TContext>(asOptions)
         }
         if (typeDefs && resolvers) {
           // this this case, no need to provide schema
-          const asOptions = defaultsDeep({ typeDefs, resolvers, plugins }, omit(options.apollo, ['schema', 'plugins']))
+          const asOptions = defaultsDeep({ typeDefs, resolvers, plugins }, omit(apolloOpts, ['schema']))
           return new ApolloServer<TContext>(asOptions)
         }
       },
@@ -253,7 +264,7 @@ export function ApolloServerMixin<TContext extends BaseContext = any>(
         }, {})
       },
 
-      async moleculerApollo(req: IncomingRequest, res: GatewayResponse) {
+      async executeHTTPGraphQLRequest(req: IncomingRequest, res: GatewayResponse) {
         const headers = createHeaderMap(req.headers)
 
         const httpGraphQLRequest: HTTPGraphQLRequest = {
@@ -312,7 +323,7 @@ export function ApolloServerMixin<TContext extends BaseContext = any>(
           // Prepare GraphQL schema
           await this.prepareGraphQLSchema()
 
-          let responseData = await this.moleculerApollo(req, res)
+          let responseData = await this.executeHTTPGraphQLRequest(req, res)
 
           res.statusCode = 200
           const responseType = 'application/json'
@@ -328,7 +339,7 @@ export function ApolloServerMixin<TContext extends BaseContext = any>(
           }
 
           const service = res.$service
-          service.sendResponse(req, res, responseData)
+          await service.sendResponse(req, res, responseData)
         } catch (err) {
           this.logger.error(err)
           this.sendError(req, res, err)
