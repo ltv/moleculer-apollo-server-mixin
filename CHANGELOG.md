@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.27](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.27%0Dv0.1.26) (2023-02-05)
+
+
+### Features
+
+* allow configure route ([e64413c](https://github.com/ltv/moleculer-apollo-server-mixin/commits/e64413c1f8f87e72171ffe2674a9fd431272924a))
+
 ### [0.1.26](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.26%0Dv0.1.25) (2023-02-05)
 
 
