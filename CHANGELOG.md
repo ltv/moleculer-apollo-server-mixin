@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.25](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.25%0Dv0.1.24) (2023-02-05)
+
+
+### Miscellaneous
+
+* fix pnpm install ([5dfb14f](https://github.com/ltv/moleculer-apollo-server-mixin/commits/5dfb14f6018c0001f3eb799eb41292ee96839c28))
+
 ### [0.1.24](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.24%0Dv0.1.23) (2023-02-05)
 
 
