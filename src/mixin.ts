@@ -125,10 +125,10 @@ export function ApolloServerMixin<TContext extends BaseContext = any>(
         // HTTP server timeout
         if (httpServerOptions?.timeout) {
           this.logger.debug('Override default http(s) server timeout:', httpServerOptions?.timeout)
-          server.setTimeout(httpServerOptions?.timeout)
+          server.setTimeout(httpServerOptions?.timeout ?? 30 * 1000) // default is 30 seconds
         }
 
-        ;(server as https.Server).requestTimeout = httpServerOptions?.requestTimeout as number
+        ;(server as https.Server).requestTimeout = httpServerOptions?.requestTimeout as number ?? 2 * 60 * 1000 // default is 2 minutes
         this.logger.debug('Setting http(s) server request timeout to:', httpServerOptions?.requestTimeout)
 
         return server
