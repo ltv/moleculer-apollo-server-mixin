@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.29](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.29%0Dv0.1.28) (2023-10-13)
+
+
+### Miscellaneous
+
+* **deps-dev:** bump word-wrap from 1.2.3 to 1.2.4 ([051fda5](https://github.com/ltv/moleculer-apollo-server-mixin/commits/051fda57ee029432d43a05c179b1990d5e27989d))
+* **deps:** bump @apollo/server from 4.3.2 to 4.9.3 ([38e6f23](https://github.com/ltv/moleculer-apollo-server-mixin/commits/38e6f23a8bc0d06c8f95c82570478726c1d3508f))
+* **deps:** bump graphql from 16.6.0 to 16.8.1 ([bd1fa3b](https://github.com/ltv/moleculer-apollo-server-mixin/commits/bd1fa3b6b4fc19d1d2d2d50c2e01a629064bbe63))
+* set default timeout for httpServer ([cc1e078](https://github.com/ltv/moleculer-apollo-server-mixin/commits/cc1e07884d4c66fcfc2eca366ccd2edf25509531))
+
 ### [0.1.28](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.28%0Dv0.1.27) (2023-02-07)
 
 
