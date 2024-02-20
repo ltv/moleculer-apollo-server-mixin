@@ -128,7 +128,7 @@ export function ApolloServerMixin<TContext extends BaseContext = any>(
           server.setTimeout(httpServerOptions?.timeout ?? 30 * 1000) // default is 30 seconds
         }
 
-        ;(server as https.Server).requestTimeout = httpServerOptions?.requestTimeout as number ?? 2 * 60 * 1000 // default is 2 minutes
+        ;(server as https.Server).requestTimeout = (httpServerOptions?.requestTimeout as number) ?? 2 * 60 * 1000 // default is 2 minutes
         this.logger.debug('Setting http(s) server request timeout to:', httpServerOptions?.requestTimeout)
 
         return server
@@ -239,7 +239,7 @@ export function ApolloServerMixin<TContext extends BaseContext = any>(
                 gqlContext: { ctx: Context; params: Record<string, any> }, // should define the type of gqlContext
                 $info: GraphQLResolveInfo,
               ) => {
-                const { ctx } = gqlContext
+                const ctx = gqlContext.ctx ?? args.ctx
                 const { parentParams = {}, action } = typeResolvers[resolverName]
                 const parentKeys = Object.keys(parentParams)
                 const transformedParent = parentKeys.reduce(
