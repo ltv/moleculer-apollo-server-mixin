@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.30](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.30%0Dv0.1.29) (2024-02-20)
+
+
+### Miscellaneous
+
+* **deps-dev:** bump @babel/traverse from 7.20.13 to 7.23.2 ([736400d](https://github.com/ltv/moleculer-apollo-server-mixin/commits/736400dce7d6c7089c7df124e17b90d1f68f6c7e))
+
+
+### Fixes and improvements
+
+* cannot resolveReference ([f1b341b](https://github.com/ltv/moleculer-apollo-server-mixin/commits/f1b341b3d9337397577d8674a35d7c2432df3094))
+
 ### [0.1.29](https://github.com/ltv/moleculer-apollo-server-mixin/branches/compare/v0.1.29%0Dv0.1.28) (2023-10-13)
 
 
