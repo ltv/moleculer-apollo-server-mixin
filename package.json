@@ -30,7 +30,7 @@
   "author": "Luc <luc@ltv.vn>",
   "license": "MIT",
   "dependencies": {
-    "@apollo/server": "^4.3.2",
+    "@apollo/server": "^5.4.0",
     "@apollo/subgraph": "^2.3.0",
     "graphql": "^16.6.0",
     "lodash.defaultsdeep": "^4.6.1",
